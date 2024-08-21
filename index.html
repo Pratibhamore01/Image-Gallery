@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image-Gallery</title>
+    <style>
+        
+.img{
+    height: 400px;
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 40px rgb(236, 74, 74);
+}
+
+.img-btn{
+    height: 50px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    margin: 20px 40px;
+    box-shadow: 0px 0px 10px rgb(245, 32, 57);
+}
+    </style>
+</head>
+
+<body>
+    <img src="nature1.jpg" class="img" id="img">
+
+    <div class="btn-container">
+        <button type="button" class="btn">
+            <img src="prev-btn.png" class="img-btn" onclick="previous()">
+        </button>
+        <button type="button" class="btn">
+            <img src="next-btn.png"   class="img-btn" onclick="next()">
+        </button>
+    </div>
+
+    <script>
+        const img = [
+            "nature1.jpg",
+            "nature2.jpg",
+            "nature3.jpg",
+            "nature4.jpg",
+            "nature5.jpg"
+        ];
+
+        let imgIndex = 0;
+
+        function previous() {
+            if (imgIndex == 0) {
+                imgIndex = img.length - 1;
+            }
+            else {
+                imgIndex--;
+            }
+
+            const image = document.getElementById('img');
+            image.src = img[imgIndex];
+
+        }
+
+        function next() {
+            if (imgIndex == img.length - 1) {
+                imgIndex = 0;
+            }
+            else {
+                imgIndex++;
+            }
+
+            const image = document.getElementById('img');
+            image.src = img[imgIndex];
+        }
+
+        setInterval(next, 2000);
+    </script>
+</body>
+
+</html>
